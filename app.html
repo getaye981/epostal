@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ePostalApp">
+<head>
+    <meta charset="UTF-8">
+    <title>E-Postal Service</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <a href="#!/">Home</a>
+        <a href="#!/about">About</a>
+        <a href="#!/services">Services</a>
+        <a href="#!/parcel-booking">Parcel Booking</a>
+        <a href="#!/tracking">Tracking</a>
+        <a href="#!/register">Register</a>
+        <a href="#!/contact">Contact Us</a>
+    </nav>
+
+    <div ng-view></div>
+</body>
+</html>

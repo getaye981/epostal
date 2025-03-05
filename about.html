@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ePostalApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Postal System</title>
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="MainController">
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <h1>E-Postal</h1>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="parcel.html">Parcel Booking</a></li>
+                <li><a href="tracking.html">tracking</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">ContactUs</a></li>
+                <li><a href="login.html">singUp</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div ng-view></div>
+     <!-- About Section -->
+     <section id="about">
+        <h2>About Us</h2>
+        <p>{{ aboutText }}</p>
+    </section>
+    <footer>
+        <p>&copy; 2025 E-Postal Services. All rights reserved.</p>
+    </footer>
+
+    <script src="about.js"></script>
+</body>
+</html>

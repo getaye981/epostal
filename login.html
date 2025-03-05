@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ePostalApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Postal System</title>
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="ParcelController">
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <h1>E-Postal</h1>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="parcel.html">Parcel Booking</a></li>
+                <li><a href="tracking.html">tracking</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="services.html">Services</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div ng-view></div>
+     <!-- Register Section -->
+        <div class="login-container">
+            <h2>Login</h2>
+            <form ng-submit="login()">
+                <label>Email:</label>
+                <input type="email" ng-model="user.email" required>
+    
+                <label>Password:</label>
+                <input type="password" ng-model="user.password" required>
+    
+                <button type="submit">Login</button>
+                <p class="error-message" ng-show="errorMessage">{{ errorMessage }}</p>
+            </form>
+            <button ng-click="goToRegister()" class="register-button">Register</button> <!-- Register Button -->
+        </div>
+    <footer>
+        <p>&copy; 2025 E-Postal Services. All rights reserved.</p>
+    </footer>
+
+    <script src="login.js"></script>
+</body>
+</html>

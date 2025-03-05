@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ePostalApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Postal System</title>
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="MainController">
+    <header>
+        <h1>E-Postal Service System</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="parcel.html">Parcel Booking</a></li>
+                <li><a href="tracking.html">tracking</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="services.html">Services</a></li>
+            
+            </ul>
+        </nav>
+        
+    </header>
+    
+    <div ng-view></div>
+
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="hero">
+            <h2>Welcome to E-Postal Services</h2>
+            <p>Fast, Secure & Reliable Postal Services</p>
+            <a href="#register" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Us</h2>
+        <p>{{ aboutText }}</p>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="service-box" ng-repeat="service in services">
+            <h3>{{ service.name }}</h3>
+            <p>{{ service.description }}</p>
+        </div>
+    </section>
+
+    <!-- Parcel Booking Section -->
+    <section id="parcel">
+        <h2>Parcel Booking</h2>
+        <form ng-submit="bookParcel()">
+            <input type="text" ng-model="parcel.sender" placeholder="Sender Name" required>
+            <input type="text" ng-model="parcel.recipient" placeholder="Recipient Name" required>
+            <input type="text" ng-model="parcel.address" placeholder="Recipient Address" required>
+            <input type="text" ng-model="parcel.itemName" placeholder="itemName" required>
+            <input type="text" ng-model="parcel.weight" placeholder="Parcel Weight (kg)" required>
+            <button type="submit">Book Parcel</button>
+        </form>
+        <p>{{ parcelMessage }}</p>
+        <button id="payButton">Pay Now</button>
+
+    <p>{{ parcelMessage }}</p>
+    </section>
+
+    <!-- Tracking Section -->
+    <section id="tracking">
+        <h2>Track Your Parcel</h2>
+        <form ng-submit="trackParcel()">
+            <input type="text" ng-model="trackingNumber" placeholder="Enter Tracking Number" required>
+            <button type="submit">Track</button>
+        </form>
+        <p>{{ trackingStatus }}</p>
+    </section>
+
+    <!-- Register Section -->
+    <section id="register">
+        <h2>Register</h2>
+        <form ng-submit="registerUser()">
+            <input type="text" ng-model="user.name" placeholder="Full Name" required>
+            <input type="email" ng-model="user.email" placeholder="Email Address" required>
+            <input type="password" ng-model="user.password" placeholder="Password" required>
+            <button type="submit">Register</button>
+        </form>
+        <p>{{ message }}</p>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form ng-submit="sendMessage()">
+            <input type="text" ng-model="contact.name" placeholder="Your Name" required>
+            <input type="email" ng-model="contact.email" placeholder="Your Email" required>
+            <textarea ng-model="contact.message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <p>{{ contactResponse }}</p>
+    </section>
+
+<!--login section-->
+<div class="login-container">
+    <h2>Login</h2>
+    <form ng-submit="login()">
+        <label>Email:</label>
+        <input type="email" ng-model="user.email" required>
+
+        <label>Password:</label>
+        <input type="password" ng-model="user.password" required>
+
+        <button type="submit">Login</button>
+        <p class="error-message" ng-show="errorMessage">{{ errorMessage }}</p>
+    </form>
+</div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 E-Postal Services. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

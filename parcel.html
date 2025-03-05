@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ePostalApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Postal System</title>
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="ParcelController">
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <h1>E-Postal</h1>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="parcel.html">Parcel Booking</a></li>
+                <li><a href="tracking.html">tracking</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="services.html">Services</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div ng-view></div>
+     <!-- Parcel Booking Section -->
+     <section id="parcel">
+        <h2>Parcel Booking</h2>
+        <form ng-submit="bookParcel()">
+            <input type="text" ng-model="parcel.sender" placeholder="Sender Name" required>
+            <input type="text" ng-model="parcel.recipient" placeholder="Recipient Name" required>
+            <input type="text" ng-model="parcel.address" placeholder="Recipient Address" required>
+            <input type="text" ng-model="parcel.itemName" placeholder="Item Name" required>
+            <input type="text" ng-model="parcel.weight" placeholder="Parcel Weight (kg)" required>
+            <button type="submit">Book Parcel</button>
+        </form>
+        <p>{{ parcelMessage }}</p>
+        <p ng-if="trackingNumber">Tracking Number: {{ trackingNumber }}</p>
+        <button id="payButton">Pay Now</button>
+    </section>
+    <footer>
+        <p>&copy; 2025 E-Postal Services. All rights reserved.</p>
+    </footer>
+
+    <script src="parcel.js"></script>
+</body>
+</html>

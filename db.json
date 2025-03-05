@@ -1,0 +1,54 @@
+{
+  "parcels": [
+    {
+      "id": 2,
+      "trackingNumber": "XYZ789",
+      "status": "In Transit"
+    }
+  ],
+  "bookings": [
+    {
+      "id": 2,
+      "trackingNumber": "XYZ789",
+      "status": "In Transit"
+    },
+    {
+      "id": "a602",
+      "trackingNumber": "TRK-330783",
+      "sender": "ddg",
+      "recipient": "fgfh",
+      "address": "vbxfg",
+      "itemName": "tyrtyh",
+      "weight": "rtsty"
+    },
+    {
+      "id": "0a52",
+      "trackingNumber": "TRK-773458",
+      "sender": "getaye",
+      "recipient": "aweke",
+      "address": "ambela",
+      "itemName": "gune",
+      "weight": "5kg"
+    }
+  ],
+  "users": [
+    {
+      "id": "b5a4",
+      "name": "Getaye Aweke Bantihun",
+      "email": "getaye@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "aefb",
+      "name": "aster",
+      "email": "aster@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "b71b",
+      "name": "alemue",
+      "email": "alemu@gmail.com",
+      "password": "1234"
+    }
+  ]
+}
