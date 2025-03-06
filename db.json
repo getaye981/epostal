@@ -1,14 +1,14 @@
 {
   "parcels": [
     {
-      "id": 2,
+      "id": "2",
       "trackingNumber": "XYZ789",
       "status": "In Transit"
     }
   ],
   "bookings": [
     {
-      "id": 2,
+      "id": "2",
       "trackingNumber": "XYZ789",
       "status": "In Transit"
     },
@@ -29,6 +29,33 @@
       "address": "ambela",
       "itemName": "gune",
       "weight": "5kg"
+    },
+    {
+      "id": "5679",
+      "trackingNumber": "TRK-313357",
+      "sender": "szdg",
+      "recipient": "xgfhf",
+      "address": "ghj",
+      "itemName": "tyu",
+      "weight": "rsty"
+    },
+    {
+      "id": "6633",
+      "trackingNumber": "TRK-925227",
+      "sender": "Getahun",
+      "recipient": "wubalem",
+      "address": "manja",
+      "itemName": "book",
+      "weight": "20kg"
+    },
+    {
+      "id": "ae0b",
+      "trackingNumber": "TRK-228146",
+      "sender": "dejene",
+      "recipient": "derese",
+      "address": "gonder",
+      "itemName": "book",
+      "weight": "2"
     }
   ],
   "users": [
@@ -49,6 +76,12 @@
       "name": "alemue",
       "email": "alemu@gmail.com",
       "password": "1234"
+    },
+    {
+      "id": "e96e",
+      "name": "alene",
+      "email": "alene@gmail.com",
+      "password": "123"
     }
   ]
 }
