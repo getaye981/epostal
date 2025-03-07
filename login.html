@@ -18,8 +18,6 @@
             <ul>
                 <li><a href="home.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="parcel.html">Parcel Booking</a></li>
-                <li><a href="tracking.html">tracking</a></li>
                 <li><a href="register.html">Register</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="contact.html">ContactUs</a></li>
@@ -29,20 +27,20 @@
     </header>
     <div ng-view></div>
      <!-- Register Section -->
-        <div class="login-container">
-            <h2>Login</h2>
-            <form ng-submit="login()">
-                <label>Email:</label>
-                <input type="email" ng-model="user.email" required>
-    
-                <label>Password:</label>
-                <input type="password" ng-model="user.password" required>
-    
-                <button type="submit">Login</button>
-                <p class="error-message" ng-show="errorMessage">{{ errorMessage }}</p>
-            </form>
-            <button ng-click="goToRegister()" class="register-button">Register</button> <!-- Register Button -->
-        </div>
+        <body ng-controller="ParcelController">
+            <div class="login-container">
+                <h2>Login</h2>
+                <form ng-submit="login()">
+                    <label>Email:</label>
+                    <input type="email" ng-model="user.email" required>
+        
+                    <label>Password:</label>
+                    <input type="password" ng-model="user.password" required>
+        
+                    <button type="submit">Login</button>
+                    <p class="error-message" ng-show="errorMessage">{{ errorMessage }}</p>
+                </form>
+                <button ng-click="goToRegister()" class="register-button">Create an Account</button> 
     <footer>
         <p>&copy; 2025 E-Postal Services. All rights reserved.</p>
     </footer>

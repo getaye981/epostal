@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ePostalApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Postal System</title>
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="ParcelController">
+
+    <!-- Navigation Bar -->
+        <header>
+            <h1>User Profile</h1>
+            </header>
+            <style>
+                .active {
+                    background-color: #007bff; /* Change to desired active color */
+                    color: white;
+                }
+                nav button {
+                    margin: 5px;
+                    padding: 10px;
+                    border: none;
+                    cursor: pointer;
+                }
+            </style>
+        </head>
+        <body ng-controller="ParcelController">
+        
+            <div class="profile-container">
+                <h2>Welcome to your Profile</h2>
+                <p>Use the menu to book and track parcels.</p>
+                <nav>
+                    <button ng-click="goToParcel()" ng-class="{active: currentPage === 'parcel'}">Book Parcel</button>
+                    <button ng-click="goToTracking()" ng-class="{active: currentPage === 'tracking'}">Track Parcel</button>
+                    <button ng-click="logout()">Logout</button>
+                </nav>
+            </div>
+        
+            <section id="profile">
+                <h2>Your Profile</h2>
+                <p>Name: {{ user.name }}</p>
+                <p>Email: {{ user.email }}</p>
+                <!-- Add more user details as needed -->
+            </section>
+    
+        <script src="profile.js"></script>
+    <footer>
+        <p>&copy; 2025 E-Postal Services. All rights reserved.</p>
+    </footer>
+</body>
+</html>
