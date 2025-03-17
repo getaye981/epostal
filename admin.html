@@ -1,84 +1,70 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="ePostalApp">
+<html ng-app="ePostalApp">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
-    <link rel="stylesheet" href="admin.css">
+    <title>ePostal Admin Page</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            margin-right: 10px;
+        }
+    </style>
 </head>
-<body ng-controller="AdminController">
-    <div class="container">
-        <h1>Admin Panel</h1>
-        
-        <h2>Manage Shipments</h2>
-        <table>
-            <tr>
-                <th>Tracking Number</th>&nbsp;&nbsp;&nbsp;
-                <th>Sender</th>&nbsp;&nbsp;&nbsp;
-                <th>Recipient</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-            <tr ng-repeat="shipment in shipments">
-                <td>{{ shipment.tracking_number }}</td>
-                <td>{{ shipment.sender_name }}</td>
-                <td>{{ shipment.recipient_name }}</td>
-                <td>{{ shipment.status }}</td>
-                <td>
-                    <button ng-click="updateStatus(shipment.tracking_number, 'Delivered')">Mark as Delivered</button>
-                    <button ng-click="deleteShipment(shipment.tracking_number)">Delete</button>
-                </td>
-            </tr>
-        </table>
-        
-        <h2>Manage Users</h2>
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Role</th>
-            </tr>
-            <tr ng-repeat="user in users">
-                <td>{{ user.name }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.role }}</td>
-            </tr>
-        </table>
-    </div>
-    <script>
-        // Declare the AngularJS module
-        var app = angular.module('ePostalApp', []);
-        
-        app.controller('AdminController', function($scope, $http) {
-            $scope.shipments = [];
-            $scope.users = [];
-            
-            $scope.loadShipments = function() {
-                $http.get('/api/parcels').then(function(response) {
-                    $scope.shipments = response.data;
-                });
-            };
-            
-            $scope.loadUsers = function() {
-                $http.get('/api/users').then(function(response) {
-                    $scope.users = response.data;
-                });
-            };
-            
-            $scope.updateStatus = function(trackingNumber, status) {
-                // Implement the status update logic here
-                console.log('Updating status for: ' + trackingNumber + ' to ' + status);
-            };
-            
-            $scope.deleteShipment = function(trackingNumber) {
-                // Implement the delete logic here
-                console.log('Deleting shipment with tracking number: ' + trackingNumber);
-            };
-            
-            $scope.loadShipments();
-            $scope.loadUsers();
-        });
-    </script>
-</body>
-</html>
+<body ng-controller="MainController">
+
+    <h2>Manage Bookings</h2>
+    <table>
+        <tr>
+            <th>Tracking Number</th>
+            <th>Sender</th>
+            <th>Recipient</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        <tr ng-repeat="booking in bookings">
+            <td>{{ booking.tracking_number }}</td>
+            <td>{{ booking.sender_name }}</td>
+            <td>{{ booking.recipient_name }}</td>
+            <td>{{ booking.status }}</td>
+            <td>
+                <button ng-click="updateStatus(booking.tracking_number, 'Delivered')">Mark as Delivered</button>
+                <button ng-click="deleteBooking(booking.tracking_number)">Delete</button>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Manage Users</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+        <tr ng-repeat="user in users">
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+            <td>
+                <button ng-click="deleteUser(user.email)">Delete</button>
+            </td>
+        </tr>
+    </table>

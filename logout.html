@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ePostalApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Postal System</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <img src="images/ethio.png" alt="Logo" class="logo">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="LogoutController">
+    <div class="container">
+        <h2>Logging Out...</h2>
+        <p>Please wait while we sign you out.</p>
+        <button ng-click="logout()">Logout Now</button>
+    </div>
+
+    <script>
+        var app = angular.module('logoutApp', []);
+        app.controller('LogoutController', function($scope, $window, $timeout) {
+            $scope.logout = function() {
+                // Clear user data from local storage or session
+                localStorage.removeItem('authToken');
+                localStorage.removeItem('user');
+                
+                // Optional: Clear session storage
+                sessionStorage.clear();
+
+                // Redirect to login page after 2 seconds
+                $timeout(function() {
+                    $window.location.href = 'login.html'; // Change to your login page URL
+                }, 2000);
+            };
+
+            // Auto logout on page load
+            $scope.logout();
+        });
+    </script>
+</body>
+</html>

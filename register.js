@@ -2,6 +2,7 @@ angular.module('ePostalApp', [])
 .controller('ParcelController', ['$scope', '$http', function($scope, $http) {
     $scope.user = {
         name: '',
+        role: '',
         email: '',
         password: ''
     };
@@ -12,6 +13,7 @@ angular.module('ePostalApp', [])
         const newUser = {
             name: $scope.user.name,
             email: $scope.user.email,
+            role: $scope.user.role,
             password: $scope.user.password
         };
 

@@ -65,6 +65,15 @@
       "address": "gonder",
       "itemName": "mobile",
       "weight": "1"
+    },
+    {
+      "id": "3eb6",
+      "trackingNumber": "TRK-665973",
+      "sender": "alene",
+      "recipient": "aster",
+      "address": "injebera",
+      "itemName": "book",
+      "weight": "2"
     }
   ],
   "users": [
@@ -97,6 +106,13 @@
       "name": "aster",
       "email": "aster@gmail.com",
       "password": "1234"
+    },
+    {
+      "id": "c983",
+      "name": "geta",
+      "email": "geta@gmail.com",
+      "role": "admin",
+      "password": "123"
     }
   ]
 }
