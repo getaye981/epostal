@@ -74,14 +74,55 @@
       "address": "injebera",
       "itemName": "book",
       "weight": "2"
+    },
+    {
+      "id": "f61b",
+      "trackingNumber": "TRK-991060",
+      "sender": "abr",
+      "recipient": "ast",
+      "address": "injebra",
+      "itemName": "book",
+      "status": "inTrasit",
+      "weight": "2"
+    },
+    {
+      "id": "5527",
+      "trackingNumber": "TRK-286762",
+      "sender": "sf",
+      "recipient": "fgd",
+      "address": "sdfss",
+      "itemName": "dfs",
+      "status": "sdfs",
+      "weight": "sdfsf"
+    },
+    {
+      "id": "d30b",
+      "trackingNumber": "TRK-497658",
+      "sender": "ghhh",
+      "recipient": "gggg",
+      "address": "fggfg",
+      "itemName": "dgf",
+      "status": "gttrg",
+      "weight": "ttry"
+    },
+    {
+      "id": "eac8",
+      "trackingNumber": "TRK-597974",
+      "sender": "hfjfh",
+      "recipient": "fjkjfgj",
+      "address": "rerag",
+      "itemName": "book",
+      "status": "transit",
+      "weight": "1"
     }
   ],
-  "users": [
+  "user": [
     {
       "id": "b5a4",
       "name": "Getaye Aweke Bantihun",
       "email": "getaye@gmail.com",
-      "password": "123456"
+      "password": "123456",
+      "balance": null
     },
     {
       "id": "aefb",
@@ -114,5 +155,14 @@
       "role": "admin",
       "password": "123"
     }
-  ]
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "cardNumber": "1234567812345678",
+      "balance": 1000
+    }
+  ],
+  "transactions": []
 }

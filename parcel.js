@@ -17,6 +17,7 @@ var app = angular.module("ePostalApp", []);
                 recipient: $scope.parcel.recipient,
                 address: $scope.parcel.address,
                 itemName: $scope.parcel.itemName,
+                status: $scope.parcel.status,
                 weight: $scope.parcel.weight
             };
 

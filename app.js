@@ -1,79 +1,45 @@
-var app = angular.module("ePostalApp", ["ngRoute"]);
-
-app.config(function($routeProvider) {
-    $routeProvider
-        .when("/", {
-            templateUrl: "home.html",
-            controller: "MainController"
-        })
-        .when("/about", {
-            templateUrl: "about.html",
-            controller: "MainController"
-        })
-        .when("/services", {
-            templateUrl: "services.html",
-            controller: "MainController"
-        })
-        .when("/parcel", {
-            templateUrl: "parcel.html",
-            controller: "MainController"
-        })
-        .when("/tracking", {
-            templateUrl: "tracking.html",
-            controller: "MainController"
-        })
-        .when("/contact", {
-            templateUrl: "contact.html",
-            controller: "MainController"
-        })
-        .otherwise({
-            redirectTo: "/"
-        });
-});
-
-app.controller('MainController', function($scope) {
-   
-
-    $scope.services = [
-        { name: "Fast Delivery", description: "We ensure quick delivery of your parcels anywhere." },
-        { name: "Package Tracking", description: "Track your shipment in real-time with our advanced tracking system." },
-        { name: "Secure Shipping", description: "Guaranteed safety for your packages with secure handling." }
-    ];
-
-    $scope.user = {};
-    $scope.message = "";
-    $scope.registerUser = function() {
-        $scope.message = "Thank you for registering, " + $scope.user.name + "!";
-    };
+angular.module('ePostalApp', [])
+.controller('ParcelController', ['$scope', '$http', function($scope, $http) {
+    const stripe = Stripe('YOUR_PUBLISHABLE_KEY'); // Replace with your Stripe publishable key
+    const elements = stripe.elements();
+    const cardElement = elements.create('card');
+    cardElement.mount('#card-element');
 
     $scope.parcel = {};
-    $scope.parcelMessage = "";
+    $scope.bookingMessage = '';
 
-    $scope.bookParcel = function() {
-        $scope.parcelMessage = "Parcel booked successfully for " + $scope.parcel.recipient + "! Please proceed with the payment.";
-    };
+    $scope.bookParcel = function(event) {
+        event.preventDefault();
 
-    // Stripe Payment Integration
-    var stripe = Stripe("4242"); // Replace with your Stripe API Key
-
-    document.getElementById("payButton").addEventListener("click", function () {
-        // Make a request to the backend to create a checkout session
-        $http.post("/create-checkout-session", {}).then(function(response) {
-            return stripe.redirectToCheckout({ sessionId: response.data.id });
-        }).catch(function(error) {
-            console.error("Error:", error);
-            alert("Payment error! Check console.");
+        // Create payment method using Stripe
+        stripe.createPaymentMethod({
+            type: 'card',
+            card: cardElement
+        }).then(function(result) {
+            if (result.error) {
+                // Display error if payment method creation fails
+                document.getElementById('card-error').textContent = result.error.message;
+            } else {
+                // Process payment and save parcel booking data
+                submitParcelBooking(result.paymentMethod.id);
+            }
         });
-    });
-    $scope.trackingStatus = "";
-    $scope.trackParcel = function() {
-        $scope.trackingStatus = "Tracking Number: " + $scope.trackingNumber + " - Status: In Transit.";
     };
 
-    $scope.contact = {};
-    $scope.contactResponse = "";
-    $scope.sendMessage = function() {
-        $scope.contactResponse = "Message sent successfully! We'll get back to you soon.";
-    };
-    
-});
+    function submitParcelBooking(paymentMethodId) {
+        // Prepare data to send to the backend
+        const parcelData = {
+            sender: $scope.parcel.sender,
+            recipient: $scope.parcel.recipient,
+            address: $scope.parcel.address,
+            itemName: $scope.parcel.itemName,
+            weight: $scope.parcel.weight,
+            paymentMethodId: paymentMethodId // You can store this for future reference
+        };
+
+        // Send parcel booking details to JSON server
+        $http.post('http://localhost:3000/Bookings', parcelData).then(function(response) {
+            $scope.bookingMessage = 'Parcel booked successfully!';
+        });
+    }
+}]);

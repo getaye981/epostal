@@ -20,4 +20,15 @@ app.controller('ParcelController', ['$scope', '$http', function($scope, $http) {
             console.error(error);
         });
     };
+    $scope.goToParcel = function() {
+        $window.location.href = 'parcel.html'; // Redirect to parcel booking page
+    };
+    
+    $scope.goToTracking = function() {
+        $window.location.href = 'tracking.html'; // Redirect to tracking page
+    };
+    
+    $scope.goToProfile = function() {
+        $window.location.href = 'profile.html'; // Redirect to user profile page
+    };
 }]);

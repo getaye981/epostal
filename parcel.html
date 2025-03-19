@@ -36,17 +36,20 @@
             <input type="text" ng-model="parcel.recipient" placeholder="Recipient Name" required>
             <input type="text" ng-model="parcel.address" placeholder="Recipient Address" required>
             <input type="text" ng-model="parcel.itemName" placeholder="Item Name" required>
+            <input type="text" ng-model="parcel.status" placeholder="status" required>
             <input type="text" ng-model="parcel.weight" placeholder="Parcel Weight (kg)" required>
             <button type="submit">Book Parcel</button>
         </form>
         <p>{{ parcelMessage }}</p>
         <p ng-if="trackingNumber">Tracking Number: {{ trackingNumber }}</p>
-        <button id="payButton">Pay Now</button>
+        <button onclick="window.open('payment.html', '_blank')">Make Payment</button>
+
     </section>
     <footer>
         <p>&copy; 2025 E-Postal Services. All rights reserved.</p>
     </footer>
 
     <script src="parcel.js"></script>
+    <!-- <script src="app.js"></script> -->
 </body>
 </html>
